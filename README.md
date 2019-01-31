@@ -4,7 +4,7 @@
   <b>React hook for visually debugging keyboard events</b>
   <p>Forked from (https://github.com/siddharthkp/use-key-debugger)</p>
   <br><br/>
-  <a href="https://codesandbox.io/s/6l6v5wqnoz">Demo on CodeSandbox</a>
+  <a href="https://codesandbox.io/s/w16p30w75">Demo on CodeSandbox</a>
 </p>
 
 &nbsp;
@@ -44,4 +44,4 @@ function App() {
 
 #### license
 
-MIT © [siddharthkp](https://github.com/siddharthkp)
+MIT © [bhaskarGyan](https://github.com/bhaskarGyan)
