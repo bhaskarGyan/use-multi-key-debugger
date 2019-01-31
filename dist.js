@@ -25,45 +25,10 @@ var symbolKeys = {
   ArrowUp: '▲',
   ArrowDown: '▼'
 };
-
-var useKeyDebugger = function useKeyDebugger() {
-  var _useState = (0, _react.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      key = _useState2[0],
-      setKey = _useState2[1];
-
-  function callback() {
-    var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    setKey(symbolKeys[event.key] || event.key);
-  }
-
-  function reset() {
-    setKey(null);
-  }
-
-  (0, _react.useEffect)(function () {
-    window.addEventListener('keydown', callback);
-    var timeout = window.setTimeout(reset, 500);
-    return function cleanup() {
-      window.clearTimeout(timeout);
-      return window.removeEventListener('keydown', callback);
-    };
-  }, [key]);
-  return function (props) {
-    if (key) return _react.default.createElement("div", _extends({
-      style: styles
-    }, props), key);else return null;
-  };
-};
-
-var _default = useKeyDebugger;
-exports.default = _default;
 var styles = {
-  position: 'fixed',
-  top: '30px',
-  right: '30px',
   minHeight: '50px',
   minWidth: '50px',
+  marginRight: '10px',
   padding: '5px',
   display: 'flex',
   justifyContent: 'center',
@@ -74,3 +39,70 @@ var styles = {
   fontSize: '28px',
   borderRadius: '5px'
 };
+var wrapperStyle = {
+  position: 'fixed',
+  top: '30px',
+  right: '30px',
+  display: 'flex'
+};
+
+var useMultiKeyDebugger = function useMultiKeyDebugger() {
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      key = _useState2[0],
+      setKey = _useState2[1];
+
+  function onKeyDown() {
+    var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var tempkey = JSON.parse(JSON.stringify(key));
+    var currentKey = symbolKeys[event.key] || event.key;
+
+    if (!event.repeat) {
+      tempkey.push(currentKey);
+      setKey(tempkey);
+    }
+  }
+
+  function onKeyUp() {
+    var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var tempkey = JSON.parse(JSON.stringify(key));
+    var currentKey = symbolKeys[event.key] || event.key;
+    tempkey = tempkey.filter(function (val) {
+      return val !== currentKey;
+    });
+    setKey(tempkey);
+  }
+
+  function reset() {
+    setKey([]);
+  }
+
+  (0, _react.useEffect)(function () {
+    window.addEventListener('keydown', onKeyDown);
+    var timeout = window.setTimeout(reset, 500);
+    return function cleanup() {
+      window.clearTimeout(timeout);
+      return window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [key.length]);
+  (0, _react.useEffect)(function () {
+    window.addEventListener('keyup', onKeyUp);
+    return function cleanup() {
+      return window.removeEventListener('keyup', onKeyUp);
+    };
+  }, [key.length]);
+  return function (props) {
+    return key.length ? _react.default.createElement("div", {
+      style: wrapperStyle
+    }, key.map(function (k, index) {
+      return _react.default.createElement("div", _extends({
+        style: styles
+      }, props, {
+        key: k
+      }), k);
+    })) : null;
+  };
+};
+
+var _default = useMultiKeyDebugger;
+exports.default = _default;

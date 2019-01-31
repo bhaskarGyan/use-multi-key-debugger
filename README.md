@@ -2,6 +2,7 @@
   <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/180/keyboard_2328.png" height="200px"/>
   <br><br>
   <b>React hook for visually debugging keyboard events</b>
+  <p>Forked from (https://github.com/siddharthkp/use-key-debugger)</p>
   <br><br/>
   <a href="https://codesandbox.io/s/6l6v5wqnoz">Demo on CodeSandbox</a>
 </p>
@@ -11,7 +12,7 @@
 #### install
 
 ```
-npm install use-key-debugger
+npm install use-multi-key-debugger
 ```
 
 &nbsp;
@@ -19,10 +20,10 @@ npm install use-key-debugger
 #### usage
 
 ```js
-import useKeyDebugger from 'use-key-debugger'
+import useMultiKeyDebugger from 'use-multi-key-debugger'
 
 function App() {
-  const Key = useKeyDebugger()
+  const Key = useMultiKeyDebugger()
 
   return (
     <div>

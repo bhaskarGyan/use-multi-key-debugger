@@ -1,6 +1,6 @@
 {
-  "name": "use-key-debugger",
-  "version": "1.0.4",
+  "name": "use-multi-key-debugger",
+  "version": "1.0.1",
   "description": "Visible debug hook for keyboard events",
   "main": "dist.js",
   "scripts": {
@@ -12,19 +12,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/siddharthkp/use-key-debugger.git"
+    "url": "git+https://github.com/bhaskarGyan/use-multi-key-debugger.git"
   },
-  "keywords": [],
-  "author": "siddharthkp",
+  "keywords": [
+    "debug",
+    "react-hook",
+    "react",
+    "keyboard"
+  ],
+  "author": "bhaskarGyan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/siddharthkp/use-key-debugger/issues"
+    "url": "https://github.com/bhaskarGyan/use-multi-key-debugger.git/issues"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
-  "homepage": "https://github.com/siddharthkp/use-key-debugger#readme",
+  "homepage": "https://github.com/bhaskarGyan/use-multi-key-debugger.git#readme",
   "devDependencies": {
     "@babel/cli": "7.2.3",
     "@babel/core": "7.2.2",
